@@ -34,12 +34,16 @@ class RoomsController < ApplicationController
     end
   end
 
+  def show
+    @themes = @room.themes
+  end
+
   private
     def set_room
       @room = Room.find(params[:id])
     end
 
     def room_params
-      params.require(:room).permit(:home_type, :room_type, :accommodate, :bedroom_count, :bathroom_count, :listing_name, :description, :address, :has_tv, :has_kitchen, :has_airco, :has_heating, :has_internet, :price, :active)
+      params.require(:room).permit(:home_type, :room_type, :accommodate, :bedroom_count, :bathroom_count, :listing_name, :description, :address, :has_tv, :has_kitchen, :has_airco, :has_heating, :has_internet, :price, :active, theme_ids: [])
     end
 end
