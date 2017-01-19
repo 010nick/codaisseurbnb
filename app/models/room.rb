@@ -1,5 +1,6 @@
 class Room < ApplicationRecord
   belongs_to :user
+  has_many :photos
 
   validates :home_type, presence: true
   validates :room_type, presence: true
@@ -19,5 +20,6 @@ class Room < ApplicationRecord
   def self.order_by_price
   order(:price)
   end
-  
+
+  mount_uploader :image, ImageUploader
 end
