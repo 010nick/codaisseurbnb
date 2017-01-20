@@ -1,6 +1,8 @@
 class Room < ApplicationRecord
   belongs_to :user
   has_many :photos
+  has_many :bookings, dependent: :destroy
+  has_many :guests, through: :bookings, source: :user
 
   validates :home_type, presence: true
   validates :room_type, presence: true

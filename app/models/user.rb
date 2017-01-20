@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :rooms, dependent: :destroy
   has_one :profile
+  has_many :bookings, dependent: :destroy
+  has_many :booked_rooms, through: :bookings, source: :room
 
   def has_profile?
         profile.present? && !profile.id.nil?
