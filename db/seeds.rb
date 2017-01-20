@@ -1,7 +1,10 @@
-Photo.delete_all
-Theme.delete_all
-Room.delete_all
-User.delete_all
+User.destroy_all
+Theme.destroy_all
+# Photo.delete_all
+# Room.delete_all
+# Booking.delete_all
+
+# destroy gebruikt voor User en Theme. Reden: de rest wordt nu 'automatisch' verwijderd, door de andere modellen.
 
 # Themes
 modern_and_minimal = Theme.create(name: "Modern and Minimal")
