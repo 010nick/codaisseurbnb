@@ -15,6 +15,16 @@ class Room < ApplicationRecord
 
   has_and_belongs_to_many :themes
 
+  def available?(checkin, checkout)
+    bookings.each do |booking|
+      if (booking.starts_at <= checkout) && (booking.ends_at >= checkin)
+        return false
+      end
+    end
+
+    true
+  end
+
   def bargain?
     price < 30
   end
